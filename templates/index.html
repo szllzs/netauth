@@ -1,0 +1,47 @@
+<!doctype html>
+{% load staticfiles %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>卡密工厂</title>
+{#    <style>#}
+{#        html{#}
+{#            background-image:url({{ MEDIA_URL }}{{ bgt.image }});#}
+{#            background-repeat:no-repeat;#}
+{#            background-size:100% 100%;#}
+{#            -moz-background-size:100% 100%;#}
+{#        }#}
+{#    </style>#}
+{#    <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">#}
+
+</head>
+<body>
+<form action="{% url 'card' %}" method="post">
+    <input type="hidden" name="key" value="{{ key }}">
+    <h1 id="info" style="color:red">{{ msg }}</h1>
+    <label for="nums">生产张数:</label>
+    <input type="text" name="nums" id="nums" value="100"/>
+    &nbsp;&nbsp;
+    <label for="unit">时间面值：</label>
+    <select name="unit" id="unit">
+        <option value="0">小时</option>
+        <option value="1" selected>天</option>
+        <option value="2">星期</option>
+        <option value="3">月</option>
+        <option value="4">三月</option>
+        <option value="5">半年</option>
+        <option value="6">年</option>
+    </select>
+&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="submit" value="确认生产" style="cursor:pointer" onclick="info()">
+</form>
+
+
+{#<script type="text/javascript" src="{% static 'js/index.js' %}"></script>#}
+<script>
+    function info() {
+        document.getElementById('info').innerHTML='正在生产卡密，请稍等……'
+    }
+</script>
+</body>
+</html>
